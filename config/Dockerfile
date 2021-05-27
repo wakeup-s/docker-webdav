@@ -1,11 +1,17 @@
-FROM httpd:alpine
+FROM httpd
 
 # These variables are inherited from the httpd:alpine image:
 # ENV HTTPD_PREFIX /usr/local/apache2
 # WORKDIR "$HTTPD_PREFIX"
 
 # Copy in our configuration files.
-COPY conf/ conf/
+COPY httpd/ conf/
+COPY db-template.kdbx /storage/db.kdbx
+
+RUN cat /etc/passwd
+
+RUN groupadd -g 1000 app
+RUN adduser --gid 1000 -u 1000 app
 
 RUN set -ex; \
     # Create empty default DocumentRoot.
@@ -13,8 +19,7 @@ RUN set -ex; \
     # Create directories for Dav data and lock database.
     mkdir -p "/var/lib/dav/data"; \
     touch "/var/lib/dav/DavLock"; \
-    chown -R www-data:www-data "/var/lib/dav"; \
-    \
+    chown -R app:app "/var/lib/dav"; \
     # Enable DAV modules.
     for i in dav dav_fs; do \
         sed -i -e "/^#LoadModule ${i}_module.*/s/^#//" "conf/httpd.conf"; \
@@ -30,9 +35,9 @@ RUN set -ex; \
         sed -i -e "/^#LoadModule ${i}_module.*/s/^#//" "conf/httpd.conf"; \
     done; \
     \
-    # Run httpd as "www-data" (instead of "daemon").
+    # Run httpd as "app" (instead of "daemon").
     for i in User Group; do \
-        sed -i -e "s|^$i .*|$i www-data|" "conf/httpd.conf"; \
+        sed -i -e "s|^$i .*|$i app|" "conf/httpd.conf"; \
     done; \
     \
     # Include enabled configs and sites.
@@ -45,11 +50,9 @@ RUN set -ex; \
     mkdir -p "conf/conf-enabled"; \
     mkdir -p "conf/sites-enabled"; \
     ln -s ../conf-available/dav.conf "conf/conf-enabled"; \
-    ln -s ../sites-available/default.conf "conf/sites-enabled"; \
-    # Install openssl if we need to generate a self-signed certificate.
-    apk add --no-cache openssl
+    ln -s ../sites-available/default.conf "conf/sites-enabled";
 
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
-EXPOSE 80/tcp 443/tcp
+EXPOSE 80/tcp
 ENTRYPOINT [ "docker-entrypoint.sh" ]
 CMD [ "httpd-foreground" ]

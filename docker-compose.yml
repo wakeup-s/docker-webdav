@@ -1,0 +1,14 @@
+version: '3'
+services:
+  webdav:
+    build: ./config
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./data/dav:/var/lib/dav
+      - ./data/httpd:/htpasswd
+      - ./config/httpd/conf-available:/usr/local/apache2/conf/conf-available
+      - ./config/httpd/sites-available:/usr/local/apache2/conf/sites-available
+      - ./keeweb:/var/www/html
+    user: "root:1000"

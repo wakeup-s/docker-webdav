@@ -1,0 +1,103 @@
+{
+  "settings": {
+    "theme": "nord",
+    "autoSwitchTheme": false,
+    "locale": "ru-RU",
+    "expandGroups": true,
+    "listViewWidth": null,
+    "menuViewWidth": null,
+    "tagsViewHeight": null,
+    "autoUpdate": "check",
+    "clipboardSeconds": 0,
+    "autoSave": true,
+    "autoSaveInterval": 5,
+    "rememberKeyFiles": "path",
+    "idleMinutes": 15,
+    "minimizeOnClose": false,
+    "minimizeOnFieldCopy": false,
+    "tableView": true,
+    "colorfulIcons": true,
+    "useMarkdown": true,
+    "directAutotype": true,
+    "autoTypeTitleFilterEnabled": true,
+    "titlebarStyle": "default",
+    "lockOnMinimize": true,
+    "lockOnCopy": false,
+    "lockOnAutoType": false,
+    "lockOnOsLock": false,
+    "helpTipCopyShown": false,
+    "templateHelpShown": false,
+    "skipOpenLocalWarn": false,
+    "hideEmptyFields": false,
+    "skipHttpsWarning": false,
+    "demoOpened": true,
+    "fontSize": 2,
+    "tableViewColumns": null,
+    "generatorPresets": null,
+    "generatorHidePassword": false,
+    "cacheConfigSettings": false,
+    "allowIframes": false,
+    "useGroupIconForEntries": false,
+    "enableUsb": true,
+    "fieldLabelDblClickAutoType": false,
+    "auditPasswords": true,
+    "auditPasswordEntropy": true,
+    "excludePinsFromAudit": true,
+    "checkPasswordsOnHIBP": false,
+    "auditPasswordAge": 0,
+    "deviceOwnerAuth": null,
+    "deviceOwnerAuthTimeoutMinutes": 0,
+    "disableOfflineStorage": true,
+    "shortLivedStorageToken": false,
+    "extensionFocusIfLocked": true,
+    "extensionFocusIfEmpty": true,
+
+    "yubiKeyShowIcon": true,
+    "yubiKeyAutoOpen": false,
+    "yubiKeyMatchEntries": true,
+    "yubiKeyShowChalResp": true,
+    "yubiKeyRememberChalResp": false,
+    "yubiKeyStuckWorkaround": false,
+
+    "canOpen": true,
+    "canOpenDemo": false,
+    "canOpenSettings": false,
+    "canCreate": false,
+    "canImportXml": false,
+    "canImportCsv": false,
+    "canRemoveLatest": false,
+    "canExportXml": false,
+    "canExportHtml": false,
+    "canSaveTo": false,
+    "canOpenStorage": true,
+    "canOpenGenerator": true,
+    "canOpenOtpDevice": true,
+    "webdav": true,
+    "webdavSaveMethod": "put",
+    "webdavStatReload": false,
+
+    "dropbox": false,
+    "gdrive": false,
+    "onedrive": false
+  },
+  "files": [{
+      "storage": "webdav",
+      "name": "Common",
+      "path": "/common/db.kdbx"
+    }, {
+      "storage": "webdav",
+      "name": "Secure",
+      "path": "/secure/db.kdbx"
+    }, {
+      "storage": "webdav",
+      "name": "Critical",
+      "path": "/critical/db.kdbx"
+    }
+  ],
+  "showOnlyFilesFromConfig": true,
+  "plugins": [{
+    "url": "https://plugins.keeweb.info/translations/ru-RU"
+  }, {
+    "url": "https://plugins.keeweb.info/plugins/theme-nord"
+  }]
+}
