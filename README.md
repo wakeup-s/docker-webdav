@@ -28,7 +28,7 @@ This example starts a WebDAV server on port 80. It can only be accessed with cre
 
 ### Secure WebDAV with SSL
 
-We recommend you use a reverse proxy (eg, Caddy) to handle SSL certificates. You can see an example of how to do that [here](https://github.com/BytemarkHosting/configs-webdav-docker).
+We recommend you use a reverse proxy (eg, Caddy) to handle SSL certificates.
 
 ### Authenticate multiple clients
 
