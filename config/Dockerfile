@@ -8,8 +8,6 @@ FROM httpd
 COPY httpd/ conf/
 COPY db-template.kdbx /storage/db.kdbx
 
-RUN cat /etc/passwd
-
 RUN groupadd -g 1000 app
 RUN adduser --gid 1000 -u 1000 app
 
